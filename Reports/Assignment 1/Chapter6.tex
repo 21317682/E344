@@ -1,0 +1,33 @@
+\chapter{System test results}
+
+\begin{table}[t]
+        \centering
+        \footnotesize
+        \caption{System test results.}
+         \begin{tabular}{c@{\qquad}rrrr}
+          \toprule
+             & Expected value & Measured value\\
+          \midrule
+          Rectifier             & $\geq\SI{12.0}{\volt}$        & \numrange{28.2}{29.6}\si{\volt} \\
+          Switchmode regulator  & $\geq\SI{9.0}{\volt}$         & \numrange{10.0}{10.4}\si{\volt} \\
+          Linear regulator      & \SI{5.0}{\volt}               & \numrange{5.04}{5.12}\si{\volt}   \\
+          Charge pump           & \SI{-5.0}{\volt}              & \numrange{-5.20}{-5.28}\si{\volt} \\
+          \SI{+5}{\volt} noise  & $\leq\SI{20.0}{\milli\volt}$  & \numrange{19.2}{25.6}\si{\milli\volt} \\
+          \SI{-5}{\volt} noise  & $\leq\SI{20.0}{\milli\volt}$  & \numrange{19.2}{60.0}\si{\milli\volt} \\
+          \bottomrule
+        \end{tabular}
+     \label{tab:system_test}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
