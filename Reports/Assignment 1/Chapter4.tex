@@ -4,13 +4,13 @@ Linear regulators behave like variable resistance devices, where the internal re
 
 
 \section{Design} \label{sec:design_linear}
-\textbf{textit{Design rationale}}
+\textbf{\textit{Design rationale}}
 As explained in Section \ref{sec:rationale_system}, the linear regulator is used to remove the noise produced by the switch-mode regulator. For efficient working of the linear regulator, the input voltage should not be too high. The maximum such voltage is calculated in Equation \ref{eq:linear_input} below.
 
 The input and output capacitors are taken from the device datasheet \cite{LM7805}. The input capacitor is not included in the design since the input pin is connected to the output of the switch-mode regulator, that already has a $\SI{220}{\mu\farad}$ capacitor. This is much larger than the $\SI{330}{\nano\farad}$ specified. A $\SI{100}{\nano\farad}$ output capacitor is included to improve the transient response.
 
 
-\noindent\textbf{textit{Design calculations}}
+\noindent\textbf{\textit{Design calculations}} \\
 \textit{Input voltage:}
 \begin{equation*}
     \begin{split}
@@ -28,11 +28,12 @@ The input and output capacitors are taken from the device datasheet \cite{LM7805
     \label{eq:linear_input}
 \end{equation}
 A \SI{9.5}{\volt} input is chosen as it meets the above requirement as well as that of the charge pump in Section \ref{sec:design_chargepump}.
+\\
 
 \noindent\textbf{\textit{Circuit diagram}} \label{subsec:design_linear_circuit}
 \begin{figure}[h]
  \centering
-  	\includegraphics[width=0.75\linewidth]{./Figures/linear_circuit.pdf}
+  	\includegraphics[width=0.75\linewidth,clip,trim = 0cm 3cm 0cm 3cm]{./Figures/linear_circuit.pdf}
   	\caption{Linear regulator circuit.}
   	\label{fig:linear_circuit}
  \end{figure}
@@ -40,16 +41,20 @@ A \SI{9.5}{\volt} input is chosen as it meets the above requirement as well as t
  
 
 \section{Simulation} \label{sec:simulation_linear}
-\begin{figure} 
+A plot of the LTSpice linear regulation simulation is given in Figure \ref{fig:+5v_simulation}.
+
+\begin{figure}[h] 
  \centering
-  	\includegraphics[width=0.6\linewidth]{./Figures/linear_simulate.pdf}
+  	\includegraphics[width=0.7\linewidth]{./Figures/linear_simulate.pdf}
   	\caption{Simulated +5V output.}
   	\label{fig:+5v_simulation}
  \end{figure}
  
  
 \section{Measurements} \label{sec:measurements_linear}
-\begin{figure} 
+A plot of the measured output voltage from the linear rectifier is given in Figure \ref{fig:5v_measurement_box}. This contains both the DC voltage level (Figure \ref{fig:5v_output_measurement}) as well as the noise levels under AC coupling (Figure \ref{fig:5v_noise_measurement}).
+
+\begin{figure}[h] 
  \centering
  
     \begin{subfigure}[]{0.49\linewidth}

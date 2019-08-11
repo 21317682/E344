@@ -11,14 +11,25 @@ The amplifying transistor is designed to be in saturation or cutoff, to maximise
 
 The arrangement of the capacitors and diodes was obtained from \cite{chargepump-main}. The capacitors should be large enough to store the charge lost to the load each cycle, but not so large that they cannot fully charge up. From Figure \ref{fig:chargepump_circuit}, C4 should be larger than C7 as it has to supply charge to the load, as well as charge up capacitor C7 when it discharges. C7 has to be large enough to avoid a significant ripple appearing at the output. 
 
-To provide some load regulation to the charge pump, a Zener diode is connected to its output \cite{Neamen:Microelectronics}. This clips the output at \SI{-5}{\volt} irregardless of the load connected. Since the charge pump is designed for a maximum load of \SI{25}{\milli\ampere}, there is no risk of exceeding the power rating of the Zener. Finally, a filter is connected to the output of the charge pump. This helps remove the \SI{10}{\kilo Hz} noise induced by the clock, as well as any \SI{150}{\kilo Hz} noise from the switchmode regulator.
+To provide some load regulation to the charge pump, a Zener diode is connected to its output \cite{Neamen:Microelectronics}. This clips the output at \SI{-5}{\volt} irregardless of the load connected. Since the charge pump is designed for a maximum load of \SI{25}{\milli\ampere}, there is no risk of exceeding the power rating of the Zener. Finally, a filter is connected to the output of the charge pump. This helps remove the \SI{10}{\kilo Hz} noise induced by the clock, as well as any \SI{150}{\kilo Hz} noise from the switchmode regulator. \\
 
 
-\noindent\textbf{textit{Design calculations}}
+\noindent\textbf{\textit{Design calculations}} \\
+\textit{Efficiency:}
+\begin{equation*}
+    \begin{split}
+        P_{supplied} &= \frac{V_{load}^2}{R_{load}} = \frac{(-5.24)^2}{330} = \SI{83.2}{\milli W} \\
+        P_{delivered} &= V_{supply} \times i_{supply} = 10.2 \times 0.08 = \SI{816}{\milli W} \\
+        Efficiency, \eta &= \frac{P_{delivered}}{P_{supplied}} \\
+        \eta &= \frac{0.0832}{0.816} = 10.196\%
+    \end{split}
+\end{equation*}
+
+The efficiency of the charge pump is extremely low. This can be attributed to power losses throught the Zener diode. Ideally, voltage regulation would be achieved by changing the duty cycle of the clock \cite{chargepump-power_electronic}, but since that was not possible here all the excess current that the charge pump produces is dumped into the Zener. Thus, the charge pump's efficiency becomes poorer the lower its load is. \\
 
 
-\noindent\textbf{\textit{Circuit diagram}}
- 
+\noindent\textbf{\textit{Circuit diagram}} \\
+The circuit diagram implemented for the charge pump is given in Figure \ref{fig:chargepump_circuit}.
 \begin{figure}[h] 
  \centering
   	\includegraphics[clip, trim = 0cm 4.2cm 0cm 2.8cm, width=1\linewidth]{./Figures/chargepump_circuit.pdf}
@@ -29,7 +40,7 @@ To provide some load regulation to the charge pump, a Zener diode is connected t
  
 
 \section{Simulation} \label{sec:simulation_chargepump}
-\begin{figure} 
+\begin{figure}[h] 
  \centering
   	\includegraphics[width=0.6\linewidth]{./Figures/chargepump_simulate.pdf}
   	\caption{Simulated +5V output.}
@@ -38,7 +49,10 @@ To provide some load regulation to the charge pump, a Zener diode is connected t
  
  
 \section{Measurements} \label{sec:measurements_chargepump}
-\begin{figure} 
+The measured DC voltage level (Figure \ref{fig:-5v_output_measurement}) as well as the noise levels under AC coupling (Figure \ref{fig:-5v_noise_measurement}) is shown.
+
+
+\begin{figure}[h]
  \centering
  
     \begin{subfigure}[]{0.49\linewidth}

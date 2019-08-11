@@ -1,6 +1,6 @@
 \chapter{System test results}
 
-\begin{table}[t]
+\begin{table}[h]
         \centering
         \footnotesize
         \caption{System test results.}
@@ -19,6 +19,10 @@
      \label{tab:system_test}
 \end{table}
 
+ 
+Table \ref{tab:system_test} gives a summary of the measurements taken from the system. They were taken under a $\SI{50}{\milli\ampere}$ load on the $\SI{+5}{\volt}$ supply, and a $\SI{15}{\milli\ampere}$ load on the $\SI{-5}{\volt}$ supply.
+
+The rectifier and switchmode regulator performed well within the required specifications as shown. The linear regulator and charge pump were also able to achieve their DC specifications sufficiently. The noise levels on both, however was slightly higher than expected.Despite the use of a low pass filter, switching noise from the switchmode was still present at the charge pump output, especially when a load was connected. So, an improvement on the current setup, or even an additional filter at the switchmode output could be used to combat this. This second option may also help reduce the noise on the linear regulator to acceptable levels. It was also noted that the noise at the linear regulator rose by up to $\SI{5}{\milli\volt}$ when the charge pump was operating simultaneously. Thus, an alternative solution would be to limit the load that the charge pump needs to supply in future.
 
 
 
